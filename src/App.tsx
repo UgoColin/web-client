@@ -11,7 +11,20 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { ExternalLink, Shield, Search, Zap, Key, Bug, Smartphone, Wifi, Globe, Network, Users, Wrench } from 'lucide-react';
+import {
+  ExternalLink,
+  Shield,
+  Search,
+  Zap,
+  Key,
+  Bug,
+  Smartphone,
+  Wifi,
+  Globe,
+  Network,
+  Users,
+  Wrench,
+} from 'lucide-react';
 import { pentestTools, categories } from '@/data/pentestTools';
 
 const categoryIcons = {
@@ -78,7 +91,7 @@ function App() {
           value={selectedCategory}
           onValueChange={setSelectedCategory}
           className="w-full">
-          <div className="mb-6 flex flex-wrap gap-2 justify-center">
+          <div className="mb-6 flex flex-wrap justify-center gap-2">
             {categories.map((category) => {
               const Icon =
                 category !== 'Tous'
@@ -88,7 +101,7 @@ function App() {
                 <button
                   key={category}
                   onClick={() => setSelectedCategory(category)}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-md text-xs lg:text-sm transition-colors ${
+                  className={`flex items-center gap-2 rounded-md px-3 py-2 text-xs transition-colors lg:text-sm ${
                     selectedCategory === category
                       ? 'bg-primary text-primary-foreground'
                       : 'bg-muted text-muted-foreground hover:bg-muted/80'
@@ -96,7 +109,7 @@ function App() {
                   {Icon && <Icon className="h-4 w-4" />}
                   <span>{category}</span>
                   <Badge
-                    variant={selectedCategory === category ? "secondary" : "outline"}
+                    variant={selectedCategory === category ? 'secondary' : 'outline'}
                     className="ml-1 text-xs">
                     {getCategoryStats(category)}
                   </Badge>
@@ -128,7 +141,7 @@ function App() {
                   </CardDescription>
                 </CardHeader>
                 <CardContent className="w-full">
-                  <div className="w-[90vw] max-w-full mx-auto overflow-hidden">
+                  <div className="mx-auto w-[90vw] max-w-full overflow-hidden">
                     <Table className="w-full table-fixed border-collapse">
                       <TableHeader>
                         <TableRow>
@@ -144,18 +157,18 @@ function App() {
                       <TableBody>
                         {filteredTools.map((tool) => (
                           <TableRow key={tool.id}>
-                            <TableCell className="font-semibold p-3 align-top">
-                              <div className="break-words whitespace-normal text-sm leading-tight">
+                            <TableCell className="p-3 align-top font-semibold">
+                              <div className="text-sm leading-tight break-words whitespace-normal">
                                 {tool.name}
                               </div>
                             </TableCell>
-                            <TableCell className="text-sm p-3 align-top">
-                              <div className="break-words whitespace-normal text-sm leading-relaxed">
+                            <TableCell className="p-3 align-top text-sm">
+                              <div className="text-sm leading-relaxed break-words whitespace-normal">
                                 {tool.description}
                               </div>
                             </TableCell>
-                            <TableCell className="text-muted-foreground text-sm p-3 align-top">
-                              <div className="break-words whitespace-normal text-sm leading-relaxed">
+                            <TableCell className="text-muted-foreground p-3 align-top text-sm">
+                              <div className="text-sm leading-relaxed break-words whitespace-normal">
                                 {tool.whenToUse}
                               </div>
                             </TableCell>
@@ -173,12 +186,16 @@ function App() {
                             </TableCell>
                             <TableCell className="p-3 align-top">
                               <Badge className={`${toolTypeColors[tool.toolType]} text-xs`}>
-                                <span className="break-words whitespace-normal">{tool.toolType}</span>
+                                <span className="break-words whitespace-normal">
+                                  {tool.toolType}
+                                </span>
                               </Badge>
                             </TableCell>
                             <TableCell className="p-3 align-top">
                               <Badge className={`${licenseColors[tool.license]} text-xs`}>
-                                <span className="break-words whitespace-normal">{tool.license}</span>
+                                <span className="break-words whitespace-normal">
+                                  {tool.license}
+                                </span>
                               </Badge>
                             </TableCell>
                             <TableCell className="p-3 align-top">
@@ -186,7 +203,7 @@ function App() {
                                 variant="ghost"
                                 size="sm"
                                 onClick={() => openLink(tool.officialLink)}
-                                className="h-8 w-8 p-0 flex-shrink-0">
+                                className="h-8 w-8 flex-shrink-0 p-0">
                                 <ExternalLink className="h-4 w-4" />
                                 <span className="sr-only">Ouvrir le lien officiel</span>
                               </Button>
